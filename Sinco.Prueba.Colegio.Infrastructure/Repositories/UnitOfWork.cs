@@ -15,6 +15,9 @@ namespace Sinco.Prueba.Colegio.Infrastructure.Repositories
             _context = context;
         }
 
+        public ColegioDbContext ColegioDbContext => _context;
+
+
         public void Dispose()
         {
             _context.Dispose();
