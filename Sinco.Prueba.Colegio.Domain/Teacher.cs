@@ -14,6 +14,7 @@ namespace Sinco.Prueba.Colegio.Domain
             Age = age;
             Address = address;
             PhoneNumber = phoneNumber;
+            IsActive = true;
         }
 
         public Teacher()
