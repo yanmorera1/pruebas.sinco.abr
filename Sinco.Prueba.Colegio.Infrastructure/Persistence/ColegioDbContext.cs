@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sinco.Prueba.Colegio.Domain;
 using Sinco.Prueba.Colegio.Domain.Common;
 
 namespace Sinco.Prueba.Colegio.Infrastructure.Persistence
@@ -27,5 +28,10 @@ namespace Sinco.Prueba.Colegio.Infrastructure.Persistence
             }
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        public DbSet<Student> Students { get; set; }
+        public DbSet<StudentSubject> StudentSubjects { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
     }
 }
