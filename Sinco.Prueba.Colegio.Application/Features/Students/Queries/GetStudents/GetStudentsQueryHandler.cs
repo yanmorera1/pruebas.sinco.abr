@@ -20,7 +20,7 @@ namespace Sinco.Prueba.Colegio.Application.Features.Students.Queries.GetStudents
 
         public async Task<IReadOnlyList<StudentVm>> Handle(GetStudentsQuery request, CancellationToken cancellationToken)
         {
-            var spec = new StudentSpecification(request.StudentId);
+            var spec = new StudentSpecification(request.StudentId, true);
             var students = await _unitOfWork.Repository<Student>().GetAllWithSpec(spec);
             return _mapper.Map<IReadOnlyList<StudentVm>>(students);
         }
