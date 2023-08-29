@@ -4,8 +4,9 @@ namespace Sinco.Prueba.Colegio.Application.Specifications.StudentSubjects
 {
     public class SubjectReportSpecification : Specification<StudentSubject>
     {
-        public SubjectReportSpecification(int year) : base(
-            ss => ss.CreatedAt.Value.Year == year)
+        public SubjectReportSpecification(int? year) : base(
+            ss =>
+            (!year.HasValue || ss.CreatedAt.Value.Year == year))
         {
             AddInclude(ss => ss.Subject);
             AddInclude(ss => ss.Student);
