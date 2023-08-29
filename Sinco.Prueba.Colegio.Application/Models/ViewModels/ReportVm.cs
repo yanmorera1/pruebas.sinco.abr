@@ -2,6 +2,7 @@
 {
     public class ReportVm
     {
+        public int Id { get; set; }
         public int AcademicYear { get; set; }
         public string StudentIdentificationNumber { get; set; }
         public string StudentName { get; set; }
