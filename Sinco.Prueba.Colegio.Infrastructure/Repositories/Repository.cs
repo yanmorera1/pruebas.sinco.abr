@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Sinco.Prueba.Colegio.Application.Contracts.Persistence;
 using Sinco.Prueba.Colegio.Domain.Common;
 using Sinco.Prueba.Colegio.Infrastructure.Persistence;
@@ -49,6 +50,20 @@ namespace Sinco.Prueba.Colegio.Infrastructure.Repositories
             IQueryable<T> query = _context.Set<T>();
             if (disableTracking) query = query.AsNoTracking();
             if (!string.IsNullOrWhiteSpace(includeString)) query = query.Include(includeString);
+            if (predicate != null) query = query.Where(predicate);
+            if (orderBy != null)
+                return await orderBy(query).ToListAsync();
+            return await query.ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Expression<Func<T, object>> includeExpression = null,
+            bool disableTracking = true)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            if (disableTracking) query = query.AsNoTracking();
+            if (includeExpression != null) query = query.Include(includeExpression);
             if (predicate != null) query = query.Where(predicate);
             if (orderBy != null)
                 return await orderBy(query).ToListAsync();
