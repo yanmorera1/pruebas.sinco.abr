@@ -21,7 +21,7 @@ namespace Sinco.Prueba.Colegio.Application.Features.Subjects.Queries.GetSubjects
 
         public async Task<IReadOnlyList<ReportVm>> Handle(GetSubjectsReportQuery request, CancellationToken cancellationToken)
         {
-            var spec = new SubjectReportSpecification(DateTime.Now.Year);
+            var spec = new SubjectReportSpecification(request.Year);
             var report = await _unitOfWork.Repository<StudentSubject>().GetAllWithSpec(spec);
             return _mapper.Map<IReadOnlyList<ReportVm>>(report);
         }

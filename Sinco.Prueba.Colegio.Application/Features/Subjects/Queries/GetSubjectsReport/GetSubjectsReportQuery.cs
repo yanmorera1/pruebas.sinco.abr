@@ -5,6 +5,6 @@ namespace Sinco.Prueba.Colegio.Application.Features.Subjects.Queries.GetSubjects
 {
     public class GetSubjectsReportQuery : IRequest<IReadOnlyList<ReportVm>>
     {
-
+        public int? Year { get; set; }
     }
 }
