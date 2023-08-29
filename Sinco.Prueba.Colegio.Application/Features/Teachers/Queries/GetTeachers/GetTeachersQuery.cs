@@ -5,6 +5,6 @@ namespace Sinco.Prueba.Colegio.Application.Features.Teachers.Queries.GetTeachers
 {
     public class GetTeachersQuery : IRequest<IReadOnlyList<TeacherVm>>
     {
-
+        public int? TeacherId { get; set; } 
     }
 }

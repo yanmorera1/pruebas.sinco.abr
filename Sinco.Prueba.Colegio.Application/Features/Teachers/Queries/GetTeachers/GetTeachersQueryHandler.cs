@@ -2,6 +2,7 @@
 using MediatR;
 using Sinco.Prueba.Colegio.Application.Contracts.Persistence;
 using Sinco.Prueba.Colegio.Application.Models.ViewModels;
+using Sinco.Prueba.Colegio.Application.Specifications.Teachers;
 using Sinco.Prueba.Colegio.Domain;
 
 namespace Sinco.Prueba.Colegio.Application.Features.Teachers.Queries.GetTeachers
@@ -19,7 +20,8 @@ namespace Sinco.Prueba.Colegio.Application.Features.Teachers.Queries.GetTeachers
 
         public async Task<IReadOnlyList<TeacherVm>> Handle(GetTeachersQuery request, CancellationToken cancellationToken)
         {
-            var teachers = await _unitOfWork.Repository<Teacher>().GetAsync(t => t.IsActive);
+            var spec = new TeacherSpecification(request.TeacherId, true);
+            var teachers = await _unitOfWork.Repository<Teacher>().GetAllWithSpec(spec);
             return _mapper.Map<IReadOnlyList<TeacherVm>>(teachers);
         }
     }
