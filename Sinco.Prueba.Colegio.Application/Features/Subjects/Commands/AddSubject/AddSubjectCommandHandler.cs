@@ -15,7 +15,7 @@ namespace Sinco.Prueba.Colegio.Application.Features.Subjects.Commands.AddSubject
 
         public async Task<int> Handle(AddSubjectCommand request, CancellationToken cancellationToken)
         {
-            var newSubject = new Subject(request.Code, request.Name);
+            var newSubject = new Subject(request.Code, request.Name, request.TeacherId);
             await _unitOfWork.Repository<Subject>().AddAsync(newSubject);
             return newSubject.Id;
         }
