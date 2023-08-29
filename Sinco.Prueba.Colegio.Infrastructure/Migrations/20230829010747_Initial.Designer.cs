@@ -12,7 +12,7 @@ using Sinco.Prueba.Colegio.Infrastructure.Persistence;
 namespace Sinco.Prueba.Colegio.Infrastructure.Migrations
 {
     [DbContext(typeof(ColegioDbContext))]
-    [Migration("20230828172758_Initial")]
+    [Migration("20230829010747_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -131,6 +131,9 @@ namespace Sinco.Prueba.Colegio.Infrastructure.Migrations
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastUpdatedAt")
                         .HasColumnType("datetime2");
