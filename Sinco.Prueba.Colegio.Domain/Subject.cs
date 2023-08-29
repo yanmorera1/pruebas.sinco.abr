@@ -6,6 +6,7 @@ namespace Sinco.Prueba.Colegio.Domain
     {
         public string Code { get; set; }
         public string Name { get; set; }
+        public bool IsActive { get; set; }
         public int TeacherId { get; set; }
         public virtual Teacher Teacher { get; set; }
         public virtual ICollection<StudentSubject> StudentSubjects { get; set; }
@@ -14,6 +15,7 @@ namespace Sinco.Prueba.Colegio.Domain
         {
             Name = name;
             Code = code;
+            IsActive = true;
         }
 
         public Subject(string code, string name, int teacherId) : this(code, name)
