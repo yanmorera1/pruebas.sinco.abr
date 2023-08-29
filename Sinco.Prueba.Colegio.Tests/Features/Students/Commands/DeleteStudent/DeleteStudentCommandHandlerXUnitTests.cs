@@ -1,12 +1,8 @@
 ﻿using AutoFixture;
-using AutoMapper;
 using Moq;
 using Shouldly;
 using Sinco.Prueba.Colegio.Application.Exceptions;
 using Sinco.Prueba.Colegio.Application.Features.Students.Commands.DeleteStudent;
-using Sinco.Prueba.Colegio.Application.Features.Subjects.Commands.AssingToTeacher;
-using Sinco.Prueba.Colegio.Application.Mappings;
-using Sinco.Prueba.Colegio.Application.Models.ViewModels;
 using Sinco.Prueba.Colegio.Domain;
 using Sinco.Prueba.Colegio.Infrastructure.Persistence;
 using Sinco.Prueba.Colegio.Infrastructure.Repositories;
