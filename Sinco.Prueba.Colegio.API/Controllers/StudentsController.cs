@@ -30,8 +30,8 @@ namespace Sinco.Prueba.Colegio.API.Controllers
             => Ok(await _mediator.Send(command));
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<StudentVm>>> GetStudents()
-            => Ok(await _mediator.Send(new GetStudentsQuery()));
+        public async Task<ActionResult<IReadOnlyList<StudentVm>>> GetStudents([FromQuery] GetStudentsQuery query)
+            => Ok(await _mediator.Send(query));
 
         [HttpPatch("{studentId}")]
         public async Task<ActionResult<StudentVm>> PatchStudent([FromRoute] int studentId, JsonPatchDocument studentDocument)
