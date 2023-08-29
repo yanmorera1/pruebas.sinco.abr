@@ -11,8 +11,9 @@ namespace Sinco.Prueba.Colegio.Application.Mappings
             CreateMap<Teacher, TeacherVm>();
             CreateMap<Student, StudentVm>();
             CreateMap<Subject, SubjectVm>()
-                .ForMember(sr => sr.TeacherName, r => r.MapFrom(r => r.Teacher.Name));
+                .ForMember(sr => sr.TeacherName, r => r.MapFrom(r => $"{r.Teacher.Name} {r.Teacher.LastName}"));
             CreateMap<StudentSubject, ReportVm>()
+                .ForMember(sr => sr.Id, r => r.MapFrom(r => r.Id))
                 .ForMember(sr => sr.AcademicYear, r => r.MapFrom(r => r.CreatedAt.Value.Year))
                 .ForMember(sr => sr.StudentIdentificationNumber, r => r.MapFrom(r => r.Student.IdentificationNumber))
                 .ForMember(sr => sr.StudentName, r => r.MapFrom(r => r.Student.Name))
