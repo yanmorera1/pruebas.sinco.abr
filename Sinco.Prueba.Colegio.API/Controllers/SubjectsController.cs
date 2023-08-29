@@ -33,8 +33,8 @@ namespace Sinco.Prueba.Colegio.API.Controllers
             => Ok(await _mediator.Send(new UpdateSubjectCommand(subjectId, jsonPatch)));
 
         [HttpGet("report")]
-        public async Task<ActionResult<IReadOnlyList<ReportVm>>> GetReport()
-            => Ok(await _mediator.Send(new GetSubjectsReportQuery()));
+        public async Task<ActionResult<IReadOnlyList<ReportVm>>> GetReport([FromQuery] GetSubjectsReportQuery query)
+            => Ok(await _mediator.Send(query));
 
     }
 }
